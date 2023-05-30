@@ -1,6 +1,5 @@
 release: python manage.py migrate
-web: gunicorn whatsapp_clone.wsgi
-heroku_config: PYTHONPATH=whatsapp_clone
+web: daphne whatsapp_clone.asgi:application --port $PORT --bind 0.0.0.0 -v2
 
 
 
