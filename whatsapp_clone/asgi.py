@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/howto/deployment/asgi/
 
 import os
 
+import django
 from django.core.asgi import get_asgi_application
 from django.urls import path
 from channels.routing import ProtocolTypeRouter,URLRouter
@@ -17,6 +18,7 @@ from chat.consumers import PersonalChatConsumer
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'whatsapp_clone.settings')
+django.setup()
 
 application = get_asgi_application()
 
