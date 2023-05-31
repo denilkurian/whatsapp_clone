@@ -132,11 +132,16 @@ DATABASES = {
 #
 #     }
 # }
-
 import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=600)
-#DATABASES['default'] = dj_database_url.config(default='postgres://...'}
-DATABASES['default'].update(db_from_env)
+
+# Get the database configuration from the environment variable, with a default value of an empty string
+database_url = os.getenv('DATABASE_URL', '')
+
+# Update the default database configuration with the database configuration from the environment variable
+DATABASES = {
+    'default': dj_database_url.config(default=database_url)
+}
+
 
 
 # Password validation

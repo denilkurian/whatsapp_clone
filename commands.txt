@@ -1,4 +1,2 @@
-celery -A whatsapp_clone.celery worker --pool=solo -l info
-celery -whatsapp_clone beat -l INFO
 
 
