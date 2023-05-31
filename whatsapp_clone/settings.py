@@ -100,7 +100,7 @@ CHANNEL_LAYERS = {
 }
 
 # CELERY SETTINGS
-CELERY_BROKER_URL = os.environ['REDIS_URL']
+CELERY_BROKER_URL = os.environ['REDIS_URL','redis://127.0.0.1:6379']
 #CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['application/json']
