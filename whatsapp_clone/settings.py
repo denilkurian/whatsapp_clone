@@ -90,25 +90,24 @@ ASGI_APPLICATION = 'whatsapp_clone.asgi.application'
 # }
 
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
-        },
-    },
-}
-
-# REDIS
-REDIS_URL = os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379')
-
-
-
 # CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels.layers.InMemoryChannelLayer',
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+#         },
 #     },
 # }
+
+
+
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -132,15 +131,17 @@ DATABASES = {
 #
 #     }
 # }
-import dj_database_url
 
-# Get the database configuration from the environment variable, with a default value of an empty string
-database_url = os.getenv('DATABASE_URL', '')
 
-# Update the default database configuration with the database configuration from the environment variable
-DATABASES = {
-    'default': dj_database_url.config(default=database_url)
-}
+# import dj_database_url
+#
+# # Get the database configuration from the environment variable, with a default value of an empty string
+# database_url = os.getenv('DATABASE_URL', '')
+#
+# # Update the default database configuration with the database configuration from the environment variable
+# DATABASES = {
+#     'default': dj_database_url.config(default=database_url)
+# }
 
 
 
@@ -177,6 +178,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
